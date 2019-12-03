@@ -1,0 +1,31 @@
+Arguments for the fitting:  Namespace(Pk_type='Pwigtest', kmax='0.3', kmin='0.01', params_str='1111')
+z, Sigma2_xy:  0.625 31.819390628
+[  1.          31.81939063   1.          10.        ] ['alpha', 'Sigma2_xy', 'A', 'B'] 4
+fixed params:  [ 0.  0.  0.  0.]
+../kp0kp2knmodes/surveyscaled-nmodes/kp0kp2knmodes_z0.625RADECcutF.dat
+Parameters from Powell optimization:  [  6.73267071e-01   2.81925075e+04   1.21055730e+00   4.76501742e+02]
+Initial parameters for MCMC:  [  1.          31.81939063   1.          10.        ]
+<class 'list'>
+Running MCMC...
+chain length = 800  minlength = 800
+scalereduction =  [ 1.00487742  1.02337334  1.00967504  1.00399428]
+chain length = 850  minlength = 800
+scalereduction =  [ 1.00004625  1.00879316  1.00357497  1.00295211]
+Done.
+Mean acceptance fraction for chain  0 :  0.462117647059
+Mean acceptance fraction for chain  1 :  0.482823529412
+Mean acceptance fraction for chain  2 :  0.476588235294
+Mean acceptance fraction for chain  3 :  0.481882352941
+length of merged chain =  68000
+MCMC result: 
+alpha=0.8004675379258911+0.000725946220310747-0.0003470584466015447
+Sigma2_xy=195.5876093904742+3.268928233948344-7.180382755584304
+A=0.9197805878056057+0.002658270608082103-0.0027441129022255373
+B=425.82065071025823+2.41157744843548-2.4332877250690785
+One mcmc running set time:  5.78174901008606
+[[  8.00467538e-01   7.25946220e-04   3.47058447e-04]
+ [  1.95587609e+02   3.26892823e+00   7.18038276e+00]
+ [  9.19780588e-01   2.65827061e-03   2.74411290e-03]
+ [  4.25820651e+02   2.41157745e+00   2.43328773e+00]]
+chi^2/dof:  12.1042933895 
+

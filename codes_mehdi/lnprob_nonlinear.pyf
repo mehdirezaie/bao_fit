@@ -1,0 +1,36 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module lnprob_nonlinear ! in 
+    interface  ! in :lnprob_nonlinear
+        subroutine match_params(theta,params_indices,fix_params,params_array,dim_theta,dim_params) ! in :lnprob_nonlinear:log_prob_nonlinear_BAO.f95
+            double precision dimension(dim_theta),intent(in) :: theta
+            double precision dimension(dim_params),intent(in) :: params_indices
+            double precision dimension(dim_params),intent(in),depend(dim_params) :: fix_params
+            double precision dimension(dim_params),intent(out),depend(dim_params) :: params_array
+            integer, optional,check(len(theta)>=dim_theta),depend(theta) :: dim_theta=len(theta)
+            integer, optional,check(len(params_indices)>=dim_params),depend(params_indices) :: dim_params=len(params_indices)
+        end subroutine match_params
+        subroutine cal_pk_model(pk_linw,pk_sm,k_t,sigma2,a,b,pk_model,dim_kt) ! in :lnprob_nonlinear:log_prob_nonlinear_BAO.f95
+            double precision dimension(dim_kt),intent(in) :: pk_linw
+            double precision dimension(dim_kt),intent(in),depend(dim_kt) :: pk_sm
+            double precision dimension(dim_kt),intent(in),depend(dim_kt) :: k_t
+            double precision intent(in) :: sigma2
+            double precision intent(in) :: a
+            double precision intent(in) :: b
+            double precision dimension(dim_kt),intent(out),depend(dim_kt) :: pk_model
+            integer, optional,check(len(pk_linw)>=dim_kt),depend(pk_linw) :: dim_kt=len(pk_linw)
+        end subroutine cal_pk_model
+        subroutine lnprior(theta,params_indices,fix_params,lp,dim_theta,dim_params) ! in :lnprob_nonlinear:log_prob_nonlinear_BAO.f95
+            double precision dimension(dim_theta),intent(in) :: theta
+            double precision dimension(dim_params),intent(in) :: params_indices
+            double precision dimension(dim_params),intent(in),depend(dim_params) :: fix_params
+            double precision intent(out) :: lp
+            integer, optional,check(len(theta)>=dim_theta),depend(theta) :: dim_theta=len(theta)
+            integer, optional,check(len(params_indices)>=dim_params),depend(params_indices) :: dim_params=len(params_indices)
+        end subroutine lnprior
+    end interface 
+end python module lnprob_nonlinear
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
