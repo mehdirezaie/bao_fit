@@ -1,0 +1,36 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module baoutils ! in 
+    interface  ! in :baoutils
+        subroutine match_params(theta,params_indices,fix_params,params_array,dim_theta,dim_params) ! in :baoutils:baoutils.f95
+            real(kind=8) dimension(dim_theta),intent(in) :: theta
+            real(kind=8) dimension(dim_params),intent(in) :: params_indices
+            real(kind=8) dimension(dim_params),intent(in),depend(dim_params) :: fix_params
+            real(kind=8) dimension(dim_params),intent(out),depend(dim_params) :: params_array
+            integer, optional,intent(in),check(len(theta)>=dim_theta),depend(theta) :: dim_theta=len(theta)
+            integer, optional,intent(in),check(len(params_indices)>=dim_params),depend(params_indices) :: dim_params=len(params_indices)
+        end subroutine match_params
+        subroutine cal_pk_model(pk_linw,pk_sm,k_t,sigma2,a,b,pk_model,dim_kt) ! in :baoutils:baoutils.f95
+            real(kind=8) dimension(dim_kt),intent(in) :: pk_linw
+            real(kind=8) dimension(dim_kt),intent(in),depend(dim_kt) :: pk_sm
+            real(kind=8) dimension(dim_kt),intent(in),depend(dim_kt) :: k_t
+            real(kind=8) intent(in) :: sigma2
+            real(kind=8) intent(in) :: a
+            real(kind=8) intent(in) :: b
+            real(kind=8) dimension(dim_kt),intent(out),depend(dim_kt) :: pk_model
+            integer, optional,intent(in),check(len(pk_linw)>=dim_kt),depend(pk_linw) :: dim_kt=len(pk_linw)
+        end subroutine cal_pk_model
+        subroutine lnprior(theta,params_indices,fix_params,lp,dim_theta,dim_params) ! in :baoutils:baoutils.f95
+            real(kind=8) dimension(dim_theta),intent(in) :: theta
+            real(kind=8) dimension(dim_params),intent(in) :: params_indices
+            real(kind=8) dimension(dim_params),intent(in),depend(dim_params) :: fix_params
+            real(kind=8) intent(out) :: lp
+            integer, optional,intent(in),check(len(theta)>=dim_theta),depend(theta) :: dim_theta=len(theta)
+            integer, optional,intent(in),check(len(params_indices)>=dim_params),depend(params_indices) :: dim_params=len(params_indices)
+        end subroutine lnprior
+    end interface 
+end python module baoutils
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
